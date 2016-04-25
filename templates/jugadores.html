@@ -1,0 +1,19 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+
+<table st-table="ctrl.jugadores_view" 
+       st-safe-src="ctrl.jugadores" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_jugador</th>
+            <th  st-sort="nombre">nombre</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jugador in ctrl.jugadores_view|filter:search">           
+            <td>{{jugador.id_jugador}}</td>
+            <td>{{jugador.nombre}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,19 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+
+<table st-table="ctrl.ligas_view" 
+       st-safe-src="ctrl.ligas" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_ligas</th>
+            <th  st-sort="nombre">nombre</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="liga in ctrl.ligas_view|filter:search">
+            <td>{{liga.id_liga}}</td>
+            <td><a ui-sref="liga({id_liga:liga.id_liga})">{{liga.nombre}}</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+<h2>Jornadas</h2>
+<table st-table="ctrl.jornadas_view" 
+       st-safe-src="ctrl.jornadas" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_jornada</th>           
+            <th  st-sort="temporada">jornada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jornada in ctrl.jornadas_view|filter:search">
+            <td>{{jornada.id_jornada}}</td>
+            <td><a ui-sref="liga.temporada.jornada({id_jornada:jornada.id_jornada})">{{jornada.descripcion}}</a></td>
+        </tr>
+    </tbody>
+</table>
+<h2>Equipos</h2>
+<table st-table="ctrl.equipos_view" 
+       st-safe-src="ctrl.equipos" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_equipo</th>           
+            <th  st-sort="temporada">nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="equipo in ctrl.equipos_view|filter:search">
+            <td>{{equipo.id_equipo}}</td>
+            <td><a ui-sref="liga.temporada.equipo({id_equipo:equipo.id_equipo})">{{equipo.equipo}}</a></td>        
+        </tr>
+    </tbody>
+</table>

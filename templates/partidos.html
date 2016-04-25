@@ -1,0 +1,26 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+
+<table st-table="ctrl.partidos_view" 
+       st-safe-src="ctrl.partidos" 
+       class="table table-striped">
+    <thead>
+        <tr>       
+            <th>id_partido</th>            
+            <th>id_jornada</th>
+            <th>id_local</th>
+            <th>id_visitante</th>
+            <th>local</th>
+            <th>visitante</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="partido in ctrl.partidos_view|filter:search">          
+            <td>{{partido.id_partido}}</td>
+            <td>{{partido.id_jornada}}</td>
+            <td>{{partido.id_local}}</td>
+            <td>{{partido.id_visitante}}</td>
+            <td>{{partido.local}}</td>
+            <td>{{partido.visitante}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+
+<table st-table="ctrl.temporadas_view" 
+       st-safe-src="ctrl.temporadas" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_temporada</th>           
+            <th  st-sort="temporada">temporada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="temporada in ctrl.temporadas_view|filter:search">
+          
+            <td>{{temporada.id_temporada}}</td>
+          
+            <td>{{temporada.nombre}}</td>
+            <td><a ui-sref="jornadas({id_liga:temporada.id_liga, id_temporada:temporada.id_temporada})">Jornadas</a></td>
+            <td><a ui-sref="equipos({id_liga:temporada.id_liga, id_temporada:temporada.id_temporada})">Equipos</a></td>
+        </tr>
+    </tbody>
+</table>

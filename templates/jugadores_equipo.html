@@ -1,0 +1,25 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+
+<table st-table="ctrl.jugadores_view" 
+       st-safe-src="ctrl.jugadores" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_liga</th>
+            <th>id_temporada</th>
+            <th>id_equipo</th>
+            <th>id_jugador</th>
+            <th  st-sort="nombre">nombre</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jugador in ctrl.jugadores_view|filter:search">
+            <td>{{jugador.id_liga}}</td>
+            <td>{{jugador.id_temporada}}</td>
+            <td>{{jugador.id_equipo}}</td>
+            <td>{{jugador.id_jugador}}</td>
+            <td><a ui-sref="jugadores({id_equipo:equipo.id_equipo ,id_liga:equipo.id_liga, id_temporada:equipo.id_temporada})">{{jugador.jugador}}</a></td>
+        </tr>
+    </tbody>
+</table>
