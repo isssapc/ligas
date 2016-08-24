@@ -1,21 +1,8 @@
 <input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
-<h2>Jornadas</h2>
-<table st-table="ctrl.jornadas_view" 
-       st-safe-src="ctrl.jornadas" 
-       class="table table-striped">
-    <thead>
-        <tr>
-            <th>id_jornada</th>           
-            <th  st-sort="temporada">jornada</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="jornada in ctrl.jornadas_view|filter:search">
-            <td>{{jornada.id_jornada}}</td>
-            <td><a ui-sref="liga.temporada.jornada({id_jornada:jornada.id_jornada})">{{jornada.descripcion}}</a></td>
-        </tr>
-    </tbody>
-</table>
+<button class="btn btn-default" ng-click="ctrl.pre_add_equipo()">Añadir Equipo</button>
+<button class="btn btn-default">Añadir Jornada</button>
+
+
 <h2>Equipos</h2>
 <table st-table="ctrl.equipos_view" 
        st-safe-src="ctrl.equipos" 
@@ -29,7 +16,92 @@
     <tbody>
         <tr ng-repeat="equipo in ctrl.equipos_view|filter:search">
             <td>{{equipo.id_equipo}}</td>
-            <td><a ui-sref="liga.temporada.equipo({id_equipo:equipo.id_equipo})">{{equipo.equipo}}</a></td>        
+            <td><a ui-sref="liga.equipo({id_equipo:equipo.id_equipo})">{{equipo.nombre}}</a></td>        
         </tr>
     </tbody>
 </table>
+
+<h2>Jornadas</h2>
+<table st-table="ctrl.jornadas_view" 
+       st-safe-src="ctrl.jornadas" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_jornada</th>           
+            <th  st-sort="temporada">jornada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jornada in ctrl.jornadas_view|filter:search">
+            <td>{{jornada.id_jornada}}</td>
+            <td><a ui-sref="liga.jornada({id_jornada:jornada.id_jornada})">{{jornada.nombre}}</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal borrar proveedor -->
+<!--<div class="modal fade" id="modalDelProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">¿Desea continuar?</h4>
+            </div>
+            <div class="modal-body">
+                <p> ¿Está seguro de borrar el proveedor: <strong>{{ctrl.proveedor_selected.nombre|uppercase}}</strong> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" ng-click="ctrl.delProveedor(ctrl.proveedor_selected)" >Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!-- Modal nuevo equipo -->
+<div class="modal fade" id="modalNuevoEquipo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nuevo Equipo</h4>
+            </div>
+            <div class="modal-body">
+                <form name="formNuevoEquipo" id="formNuevoEquipo" class="form-horizontal" ng-submit="formNuevoEquipo.$valid && ctrl.add_equipo()" novalidate>
+                    <div class="box-body">
+                        <div class="form-group" ng-class="{'has-error':(formNuevoEquipo.$submitted || formNuevoEquipo.nombre.$touched) && formNuevoEquipo.nombre.$error.required}" >
+                            <label class="col-sm-2 control-label">Nombre</label>
+                            <div class="col-sm-10" >
+                                <input type="text" name="nombre" class="form-control" ng-model="ctrl.nuevo_equipo.nombre" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Contacto</label>
+                            <div class="col-sm-10" >                               
+                                <input type="text" class="form-control" ng-model="ctrl.nuevo_equipo2.contacto" >
+                            </div>
+                        </div>
+                        <div class="form-group">                                  
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" ng-model="ctrl.nuevo_equipo2.email" >
+                            </div>
+                        </div>
+                        <div class="form-group">                              
+                            <label class="col-sm-2 control-label">Teléfono</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" ng-model="ctrl.nuevo_equipo2.telefono">
+                            </div>
+                        </div>                       
+                    </div>                  
+                </form>
+                <div>{{ctrl.nuevo_equipo|json}}</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="submit" form="formNuevoEquipo" class="btn btn-primary">Guardar</button>
+            </div>
+
+        </div>
+    </div>
+</div>

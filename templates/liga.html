@@ -1,0 +1,58 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+<button class="btn btn-default">Añadir Equipo</button>
+<button class="btn btn-default">Añadir Jornada</button>
+
+
+<h2>Temporadas</h2>
+<table st-table="ctrl.temporadas_view" 
+       st-safe-src="ctrl.temporadas" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_temporada</th>           
+            <th  st-sort="temporada">temporada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="temporada in ctrl.temporadas_view|filter:search">
+            <td>{{temporada.id_temporada}}</td>
+            <td><a ui-sref="liga.temporada({id_temporada:temporada.id_temporada})">{{temporada.temporada}}</a></td>        
+        </tr>
+    </tbody>
+</table>
+
+<h2>Equipos</h2>
+<table st-table="ctrl.equipos_view" 
+       st-safe-src="ctrl.equipos" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_equipo</th>           
+            <th  st-sort="temporada">nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="equipo in ctrl.equipos_view|filter:search">
+            <td>{{equipo.id_equipo}}</td>
+            <td><a ui-sref="liga.equipo({id_equipo:equipo.id_equipo})">{{equipo.equipo}}</a></td>        
+        </tr>
+    </tbody>
+</table>
+
+<h2>Jornadas</h2>
+<table st-table="ctrl.jornadas_view" 
+       st-safe-src="ctrl.jornadas" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_jornada</th>           
+            <th  st-sort="temporada">jornada</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jornada in ctrl.jornadas_view|filter:search">
+            <td>{{jornada.id_jornada}}</td>
+            <td><a ui-sref="liga.jornada({id_jornada:jornada.id_jornada})">{{jornada.nombre}}</a></td>
+        </tr>
+    </tbody>
+</table>

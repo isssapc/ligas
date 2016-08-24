@@ -12,9 +12,8 @@
     <tbody>
         <tr ng-repeat="temporada in ctrl.temporadas_view|filter:search">
           
-            <td>{{temporada.id_temporada}}</td>
-          
-            <td>{{temporada.nombre}}</td>
+            <td>{{temporada.id_temporada}}</td>          
+            <td>{{temporada.temporada}}</td>
             <td><a ui-sref="jornadas({id_liga:temporada.id_liga, id_temporada:temporada.id_temporada})">Jornadas</a></td>
             <td><a ui-sref="equipos({id_liga:temporada.id_liga, id_temporada:temporada.id_temporada})">Equipos</a></td>
         </tr>

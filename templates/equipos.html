@@ -7,6 +7,7 @@
         <tr> 
             <th>id_equipo</th>
             <th st-sort="nombre">nombre</th>
+            <th>liga</th>
 
         </tr>
     </thead>
@@ -14,6 +15,7 @@
         <tr ng-repeat="equipo in ctrl.equipos_view|filter:search">
             <td>{{equipo.id_equipo}}</td>
             <td>{{equipo.nombre}}</td>
+            <td>{{equipo.liga}} ({{equipo.id_liga}})</td>
         </tr>
     </tbody>
 </table>

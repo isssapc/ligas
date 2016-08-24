@@ -5,15 +5,20 @@
        class="table table-striped">
     <thead>
         <tr>
-            <th>id_ligas</th>
-            <th  st-sort="nombre">nombre</th>
-
+            <th>id_liga</th>
+            <th st-sort="nombre">nombre</th>         
+            <th>categoría</th>
+            <th>división</th>
+            <th>rama</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="liga in ctrl.ligas_view|filter:search">
             <td>{{liga.id_liga}}</td>
-            <td><a ui-sref="liga({id_liga:liga.id_liga})">{{liga.nombre}}</a></td>
+            <td><a ui-sref="liga({id_liga:liga.id_liga})">{{liga.nombre}}</a></td>            
+            <td>{{liga.categoria}} ({{liga.id_categoria}})</td>
+            <td>{{liga.division}} ({{liga.id_division}})</td>
+            <td>{{liga.rama}} ({{liga.id_rama}})</td>            
         </tr>
     </tbody>
 </table>

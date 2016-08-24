@@ -6,8 +6,9 @@
     <thead>
         <tr>       
             <th>id_liga</th>
-            <th>id_temporada</th>
-            <th>id_jornada</th>
+            <th>liga</th>
+            <th>categoria</th>
+             <th>temporada</th>
             <th  st-sort="descripcion">descripcion</th>
 
         </tr>
@@ -15,9 +16,10 @@
     <tbody>
         <tr ng-repeat="jornada in ctrl.jornadas_view|filter:search">          
             <td>{{jornada.id_liga}}</td>
-            <td>{{jornada.id_temporada}}</td>
-            <td>{{jornada.id_jornada}}</td>
-            <td><a ui-sref="partidos({id_jornada:jornada.id_jornada})">{{jornada.descripcion}}</a></td>
+            <td>{{jornada.liga}}</td>
+            <td>{{jornada.categoria}}</td>
+            <td>{{jornada.temporada}}</td>
+            <td><a ui-sref="partidos({id_jornada:jornada.id_jornada})">{{jornada.nombre}}</a></td>
         </tr>
     </tbody>
 </table>

@@ -1,0 +1,54 @@
+<input type="search" class="form-control" placeholder="buscar..." ng-model="search.$" >
+<h2>Jugadores</h2>
+<table st-table="ctrl.jugadores_view" 
+       st-safe-src="ctrl.jugadores" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>id_jugador</th>
+            <th>id_equipo</th>
+            <th>equipo</th>
+            <th>id_liga</th>
+            <th>liga</th>
+            <th  st-sort="nombre">nombre</th>
+            <th>edad</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="jugador in ctrl.jugadores_view|filter:search">
+            <td>{{jugador.id_jugador}}</td>
+            <td>{{jugador.id_equipo}}</td>
+            <td>{{jugador.equipo}}</td>
+            <td>{{jugador.id_liga}}</td> 
+            <td>{{jugador.liga}}</td>
+            <td><a ui-sref="jugadores({id_equipo:equipo.id_equipo ,id_liga:equipo.id_liga, id_temporada:equipo.id_temporada})">{{jugador.nombre}}</a></td>
+            <td>{{jugador.edad}}</td> 
+        </tr>
+    </tbody>
+</table>
+
+<h2>Partidos</h2>
+<table st-table="ctrl.partidos_view" 
+       st-safe-src="ctrl.partidos" 
+       class="table table-striped">
+    <thead>
+        <tr>
+            <th>Jornada</th>
+            <th>Local</th>
+             <th>Goles Local</th>
+              <th>Goles Visitante</th>
+            <th>Visitante</th> 
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="partido in ctrl.partidos_view|filter:search">
+            <td>{{partido.jornada}}</td>
+            <td>{{partido.local}}</td>
+            <td>{{partido.goles_local}}</td>
+            <td>{{partido.goles_visitante}}</td> 
+            <td>{{partido.visitante}}</td>           
+            <td><a ui-sref="jugadores({id_equipo:equipo.id_equipo ,id_liga:equipo.id_liga, id_temporada:equipo.id_temporada})">{{jugador.jugador}}</a></td>
+        </tr>
+    </tbody>
+</table>

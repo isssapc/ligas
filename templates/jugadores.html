@@ -7,6 +7,9 @@
         <tr>
             <th>id_jugador</th>
             <th  st-sort="nombre">nombre</th>
+            <th>equipo</th>
+            <th>liga</th>
+            <th>temporada</th>
 
         </tr>
     </thead>
@@ -14,6 +17,9 @@
         <tr ng-repeat="jugador in ctrl.jugadores_view|filter:search">           
             <td>{{jugador.id_jugador}}</td>
             <td>{{jugador.nombre}}</td>
+            <td>{{jugador.equipo}} ({{jugador.id_equipo}})</td>
+            <td>{{jugador.liga}} ({{jugador.id_liga}})</td>
+            <td>{{jugador.temporada}} ({{jugador.id_temporada}})</td>
         </tr>
     </tbody>
 </table>

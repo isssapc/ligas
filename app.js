@@ -54,14 +54,24 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     templateUrl: 'templates/temporadas.html',
                     controller: 'TemporadasCtrl as ctrl'
                 })
+                .state('jornadas', {
+                    url: '/jornadas',
+                    templateUrl: 'templates/jornadas.html',
+                    controller: 'JornadasCtrl as ctrl'
+                })
+                .state('partidos', {
+                    url: '/partidos',
+                    templateUrl: 'templates/partidos.html',
+                    controller: 'PartidosCtrl as ctrl'
+                })
 
 
 
 
                 .state('liga', {
                     url: '/liga/{id_liga}',
-                    templateUrl: 'templates/temporadas_liga.html',
-                    controller: 'TemporadasLigaCtrl as ctrl'
+                    templateUrl: 'templates/liga.html',
+                    controller: 'LigaCtrl as ctrl'
                 })
                 .state('liga.temporada', {
                     url: '/temporada/{id_temporada}',
@@ -73,22 +83,22 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     }
                 })
 
-                .state('liga.temporada.equipo', {
+                .state('liga.equipo', {
                     url: '/equipo/{id_equipo}',
                     views: {
                         "@": {
-                            templateUrl: 'templates/jugadores_equipo.html',
-                            controller: 'JugadoresEquipoCtrl as ctrl'
+                            templateUrl: 'templates/equipo.html',
+                            controller: 'EquipoCtrl as ctrl'
                         }
                     }
 
                 })
-                .state('liga.temporada.jornada', {
+                .state('liga.jornada', {
                     url: '/jornada/{id_jornada}',
                     views: {
                         "@": {
-                            templateUrl: 'templates/partidos.html',
-                            controller: 'PartidosCtrl as ctrl'
+                            templateUrl: 'templates/partidos_jornada.html',
+                            controller: 'PartidosJornadaCtrl as ctrl'
                         }
                     }
 
